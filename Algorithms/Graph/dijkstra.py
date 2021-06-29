@@ -43,9 +43,9 @@ def dijkstra(g, n, s):
         index, minValue = pq.get()
         visited[index] = True
 
-        # early cutoff
-        if dist[index] < minValue:
-            continue
+        # # early cutoff
+        # if dist[index] < minValue:
+        #     continue
 
         for node in g[index]:
             to, w = node

@@ -44,6 +44,32 @@ def dfs_helper(g, node, visited):
         dfs_helper(g, next, visited)
 
 
+def dfs_iterative(g, n):
+    visited = [False for i in range(n)]
+    start_node = 0
+    stack = []
+
+    stack.append(start_node)
+    while len(stack) > 0:
+        node = stack.pop()
+        
+        if visited[node]:
+            continue
+
+        visited[node] = True
+        print("Visited Node: ", node)
+        for adj in g[node]:
+            if not visited[adj]:
+                stack.append(adj)
+
+    print("DFS COMPLETE")
+
+    
+
 dfs(test_input1, n)
 dfs(test_input2, n)
 dfs(test_input3, n)
+print("ITERATIVE")
+dfs_iterative(test_input1, n)
+dfs_iterative(test_input2, n)
+dfs_iterative(test_input3, n)
