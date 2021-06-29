@@ -1,2 +1,2 @@
-# LeetCode
-Some of the more helpful LeetCode problems
+# Preparing for Coding Interview
+This repo includes leetcode problems and algorithms
