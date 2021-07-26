@@ -3,30 +3,17 @@ class Node:
         self.value = value
         self.next = None
 
-def invert_ll(head):
-    prev = None
-    cur = head
-    while cur != None:
-        next = cur.next
-        cur.next = prev
-
-        prev = cur
-        cur = next
-
-    # not pass by reference
-    head = prev
-
-    return head
+def delete_node(node_a, val):
+    pass
 
 
-# Init two linked lists
 # node_a: 1->2->3->4
 node_a = Node(1)
 node_a.next = Node(2)
 node_a.next.next = Node(3)
 node_a.next.next.next = Node(4)
 
-node_a = invert_ll(node_a)
+node_a = delete_node(node_a, 3)
 
 while node_a != None:
     print(node_a.value)

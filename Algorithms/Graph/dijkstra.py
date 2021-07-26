@@ -4,6 +4,8 @@ Dijkstra's Shortest Path Algorithm
 O((V+E)logV) Time (near complete graph worst)
 O(V) using min priority queue
 
+O(ELogE) time for heap implementation
+
 """
 
 from queue import PriorityQueue
