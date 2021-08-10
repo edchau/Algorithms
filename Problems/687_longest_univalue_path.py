@@ -1,40 +1,43 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+"""
+687. Longest Univalue Path
+Given the root of a binary tree, return the length of the longest path, 
+where each node in the path has the same value. This path may or may 
+not pass through the root.
 
-class Solution:
-    """
-    687. Longest Univalue Path
-    Given a binary tree, find the length of the longest path where each node in the path has the same value. 
-    This path may or may not pass through the root.
-    The length of path between two nodes is represented by the number of edges between them.
-              1
-             / \
-            4   5
-           / \   \
-          4   4   5
-          Output: 2
-    """
-    def longestUnivaluePath(self, root: TreeNode) -> int:
-        self.count = 0
-        
-        def find_longest(node):
-            if not node:
-                return 0
-            left_path = find_longest(node.left)
-            right_path = find_longest(node.right)
-            left = right = 0
+The length of the path between two nodes is represented by the number 
+of edges between them.
+"""
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def longestUnivaluePath(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.length = 0
+        self.dfs(root)
+        return self.length
             
-            if node.left and node.val == node.left.val:
-                left = left_path + 1
-            if node.right and node.val == node.right.val:
-                right = right_path + 1
-            self.count = max(self.count, left + right)
-            # return max(left, right)
+    def dfs(self, node):
+        if not node:
+            return 0
         
+        left_traverse, right_traverse = self.dfs(node.left), self.dfs(node.right)
+        left, right = 0, 0
+        if node.left and node.left.val == node.val:
+            left = 1 + left_traverse
+        if node.right and node.right.val == node.val:
+            right = 1 + right_traverse
         
-        find_longest(root)
-        return self.count
+        # left + right bc one path as seen in example 2
+        self.length = max(self.length, left + right)
+        
+        # if we go down one path, we cannot take the other
+        return max(left, right)
+        

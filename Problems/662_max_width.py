@@ -19,16 +19,26 @@ class Solution:
     It is guaranteed that the answer will in the range of 
     32-bit signed integer.
     """
-    def widthOfBinaryTree(self, root: TreeNode) -> int:
-        count = 0
-        depth_pos = {}
+    def widthOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        queue = [(root, 1, 1)]
         
-        def dfs(node, depth = 0, pos = 0):
-            nonlocal count
+        left_most_node = {1: 1}
+        
+        width = 1
+        
+        while len(queue) > 0:
+            node, pos, depth = queue.pop(0)
+
             if node:
-                depth_pos.setdefault(depth, pos)
-                count = max(count, pos - depth_pos[depth] + 1)
-                dfs(node.left, depth+1, pos * 2)
-                dfs(node.right, depth+1, pos * 2 + 1)
-        dfs(root)
-        return count
+                if depth not in left_most_node:
+                    left_most_node[depth] = pos
+
+                queue.append((node.left, pos*2, depth + 1))
+                queue.append((node.right, pos*2+1, depth + 1))
+                width = max(width, pos - left_most_node[depth] + 1)
+
+        return width

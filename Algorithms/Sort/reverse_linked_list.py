@@ -19,7 +19,6 @@ def invert_ll(head):
     return head
 
 
-# Init two linked lists
 # node_a: 1->2->3->4
 node_a = Node(1)
 node_a.next = Node(2)

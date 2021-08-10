@@ -4,7 +4,18 @@ class Node:
         self.next = None
 
 def delete_node(node_a, val):
-    pass
+    head = node_a
+    prev = None
+    while node_a != None:
+        if node_a.value == val:
+            if prev == None:
+                head = node_a.next
+            else:
+                prev.next = node_a.next
+        prev = node_a
+        node_a = node_a.next
+    
+    return head
 
 
 # node_a: 1->2->3->4
