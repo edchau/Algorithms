@@ -1,9 +1,10 @@
 """
-Longest Palindromic Substring
+647. Palindromic Substrings
+Given a string s, return the number of palindromic substrings in it.
 
-Input: "babad"
-Output: "bab"
-Note: "aba" is also a valid answer.
+A string is a palindrome when it reads the same backward as forward.
+
+A substring is a contiguous sequence of characters within the string.
 
 O(n^2) Time
 O(n^2) Space
@@ -16,7 +17,7 @@ class Solution(object):
         :rtype: int
         """
         dp = [[False for j in range(len(s))]  for i in range(len(s))]
-        res = ""
+        count = len(s)
         
         # Length of 1 Palindrome
         for i in range(len(s)):
@@ -33,8 +34,7 @@ class Solution(object):
                     # calculated substr in between
                     # is already a palindrome
                     if j - i == 1 or dp[i+1][j-1]:
-                        if j - i + 1> len(res):
-                            res = s[i:j+1]
+                        count += 1
                         dp[i][j] = True
         
-        return res
+        return count
