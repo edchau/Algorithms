@@ -42,3 +42,24 @@ class Solution(object):
                     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
         
         return dp[len(text1)][len(text2)]
+
+    def LCS_memo(self, text1, text2):
+        """
+        :type text1: str
+        :type text2: str
+        :rtype: int
+        """
+        return self.LCS(text1, text2, len(text1), len(text2), {})
+
+    def LCS(self, text1, text2, i, j, memo):
+        key = (i, j)
+        if (key in memo):
+            return memo[key]
+        if i == 0 or j == 0:
+            return 0
+        elif text1[i-1] == text2[j-1]:
+            memo[key] = 1 + self.LCS(text1, text2, i-1, j-1, memo)
+            return memo[key]
+        else:
+            memo[key] = max(self.LCS(text1, text2, i-1, j, memo), self.LCS(text1, text2, i, j-1, memo))
+            return memo[key]
