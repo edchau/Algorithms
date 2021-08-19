@@ -49,20 +49,20 @@ def best_sum(target, numbers, memo):
 
 
 def best_sum_tab(target, numbers):
-    db = [None for _ in range(target+1)]
-    db[0] = []
+    dp = [None for _ in range(target+1)]
+    dp[0] = []
 
     for i in range(target+1):
-        if db[i] != None:
+        if dp[i] != None:
             for num in numbers:
                 if i + num < target + 1:
                     """
-                    compare length of db[i] + 1 num to the current
-                    db[i+num] before updating db
+                    compare length of dp[i] + 1 num to the current
+                    dp[i+num] before updating dp
                     """
-                    if db[i+num] is None or len(db[i]) + 1 < len(db[i+num]):
-                        db[i+num] = db[i] + [num]
-    return db[i]
+                    if dp[i+num] is None or len(dp[i]) + 1 < len(dp[i+num]):
+                        dp[i+num] = dp[i] + [num]
+    return dp[i]
 
 print(best_sum(7, [5,3,4,7], {}))
 print(best_sum(8, [2,3,5], {}))

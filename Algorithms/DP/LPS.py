@@ -10,17 +10,21 @@ O(n^2) Space
 """
 
 class Solution(object):
-    def countSubstrings(self, s):
+    def longestPalindrome(self, s):
         """
         :type s: str
-        :rtype: int
+        :rtype: str
         """
+        if len(s) <= 1:
+            return s
+        
         dp = [[False for j in range(len(s))]  for i in range(len(s))]
         res = ""
         
         # Length of 1 Palindrome
         for i in range(len(s)):
             dp[i][i] = True
+            res = s[i]
             
         # if we start from end, we can build table from
         # simplest case and build up since the ind at
@@ -33,8 +37,10 @@ class Solution(object):
                     # calculated substr in between
                     # is already a palindrome
                     if j - i == 1 or dp[i+1][j-1]:
-                        if j - i + 1> len(res):
+                        print(s[i:j+1])
+                        if j - i + 1 > len(res):
                             res = s[i:j+1]
                         dp[i][j] = True
+        
         
         return res

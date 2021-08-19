@@ -38,18 +38,18 @@ def grid_traveler_tab(m, n):
     get 1 way. Then as we go to the next row, we see an 
     extra way to get to (2,2) is added from (2,1) 
     """
-    db = [[0 for col in range(n+1)] for row in range(m+1)]
-    db[1][1] = 1 # 1 way to travel in 1 x 1 grid
+    dp = [[0 for col in range(n+1)] for row in range(m+1)]
+    dp[1][1] = 1 # 1 way to travel in 1 x 1 grid
 
     for i in range(m + 1):
         for j in range(n + 1):
-            cur = db[i][j]
+            cur = dp[i][j]
             if j+1 < n+1:
-                db[i][j+1] += cur
+                dp[i][j+1] += cur
             if i+1 < m+1:
-                db[i+1][j] += cur
+                dp[i+1][j] += cur
 
-    return db[m][n]
+    return dp[m][n]
 
 print(grid_traveler(1,1))
 print(grid_traveler(2,3))

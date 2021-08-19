@@ -41,16 +41,16 @@ def can_construct(target, word_bank, memo):
 
 
 def can_construct_tab(target, word_bank):
-    db = [False for _ in range(len(target)+1)]
-    db[0] = True
+    dp = [False for _ in range(len(target)+1)]
+    dp[0] = True
 
     for i in range(len(target) + 1):
-        if db[i]:
+        if dp[i]:
             for word in word_bank:
                 if target[i:].find(word) == 0:
-                    db[i + len(word)] = True
+                    dp[i + len(word)] = True
                     
-    return db[len(target)]
+    return dp[len(target)]
 
 print(can_construct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'], {}))
 print(can_construct('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'], {}))

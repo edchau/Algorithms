@@ -53,15 +53,15 @@ def can_sum_tab(target, numbers):
     3 + 5 = 8 -> True
     iterate until target + 1 (extra space for 0)
     """
-    db = [False for _ in range(target+1)]
-    db[0] = True
+    dp = [False for _ in range(target+1)]
+    dp[0] = True
 
     for i in range(target+1):
-        if db[i]:
+        if dp[i]:
             for num in numbers:
                 if i + num < target + 1:
-                    db[i + num] = True
-    return db[target]
+                    dp[i + num] = True
+    return dp[target]
 
 print(can_sum(7, [5,3,4,7], {}))
 print(can_sum(7, [2,3], {}))

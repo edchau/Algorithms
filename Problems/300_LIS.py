@@ -15,9 +15,9 @@ Output: 4
 Explanation: The longest increasing subsequence is [2,3,7,101], 
 therefore the length is 4.
 
+O(nlogn) Time
 
-O(n^2) Time
-O(n) Space
+Use Patience Sorting
 """
 
 class Solution(object):
@@ -26,12 +26,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        dp = [1] * len(nums)
+        stack = [nums[0]]
         
-        for i in range(1, len(nums)):
-            for j in range(i):
-                if nums[i] > nums[j]:
-                    if dp[j] + 1 > dp[i]:
-                        dp[i] = dp[j] + 1
-
-        return max(dp)
+        for num in nums:
+            for i in range(len(stack)):
+                if stack[i] >= num:
+                    stack[i] = num
+                    break
+            if num not in stack:
+                stack.append(num)
+        
+        return len(stack)
