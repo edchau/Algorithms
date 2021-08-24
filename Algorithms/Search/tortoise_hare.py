@@ -16,7 +16,7 @@ def tortoise_hare(head):
     ptr1 = head
     ptr2 = head
 
-    while ptr1.next != None and ptr2.next.next != None:
+    while ptr2.next != None and ptr2.next.next != None:
         ptr1 = ptr1.next
         ptr2 = ptr2.next.next
         if (ptr1 == ptr2):

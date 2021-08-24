@@ -15,6 +15,9 @@ Example 1:
 Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
 Output: 7
 Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+
+O(2^mn) if brute force
+O(m*n) dp time
 """
 class Solution(object):
     def minPathSum(self, grid):

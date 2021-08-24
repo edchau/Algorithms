@@ -37,7 +37,6 @@ class Solution(object):
                     # calculated substr in between
                     # is already a palindrome
                     if j - i == 1 or dp[i+1][j-1]:
-                        print(s[i:j+1])
                         if j - i + 1 > len(res):
                             res = s[i:j+1]
                         dp[i][j] = True

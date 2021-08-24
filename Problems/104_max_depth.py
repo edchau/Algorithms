@@ -18,7 +18,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
         queue = [(root, 1)]
         max_depth = 0
         

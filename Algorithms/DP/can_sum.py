@@ -63,6 +63,16 @@ def can_sum_tab(target, numbers):
                     dp[i + num] = True
     return dp[target]
 
+def can_sum_fast(target, numbers):
+    dp = [False for _ in range(target+1)]
+    dp[0] = True
+    for num in numbers:
+        for i in range(num, target+1):
+            dp[i] = dp[i] or dp[i-num]
+    
+    return dp[target]
+
+
 print(can_sum(7, [5,3,4,7], {}))
 print(can_sum(7, [2,3], {}))
 print(can_sum(300, [7, 14], {}))
@@ -70,3 +80,7 @@ print(can_sum(300, [7, 14], {}))
 print(can_sum_tab(7, [5,3,4,7]))
 print(can_sum_tab(7, [2,3]))
 print(can_sum_tab(300, [7, 14]))
+
+print(can_sum_fast(7, [5,3,4,7]))
+print(can_sum_fast(7, [2,3]))
+print(can_sum_fast(300, [7, 14]))

@@ -41,16 +41,16 @@ def all_construct(target, word_bank, memo):
     return result
 
 def all_construct_tab(target, word_bank):
-    db = [[] for _ in range(len(target)+1)]
-    db[0] = [[]]
+    dp = [[] for _ in range(len(target)+1)]
+    dp[0] = [[]]
 
     for i in range(len(target) + 1):
-        if db[i] != None:
+        if dp[i] != None:
             for word in word_bank:
                 if target[i:].find(word) == 0:
-                    db[i + len(word)] += [arr + [word] for arr in db[i]]
+                    dp[i + len(word)] += [arr + [word] for arr in dp[i]]
 
-    return db[len(target)]
+    return dp[len(target)]
 
 
 print(all_construct('purple', ['purp', 'p', 'ur', 'le', 'purpl'], {}))

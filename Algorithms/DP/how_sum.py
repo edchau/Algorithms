@@ -41,15 +41,26 @@ def how_sum(target, numbers, memo):
 
 
 def how_sum_tab(target, numbers):
-    db = [None for _ in range(target+1)]
-    db[0] = []
+    dp = [None for _ in range(target+1)]
+    dp[0] = []
 
     for i in range(target+1):
-        if db[i] != None:
+        if dp[i] != None:
             for num in numbers:
                 if i + num < target + 1:
-                    db[i+num] = db[i] + [num]
-    return db[i]
+                    dp[i+num] = dp[i] + [num]
+    return dp[target]
+
+def how_sum_fast(target, numbers):
+    dp = [None for _ in range(target+1)]
+    dp[0] = []
+
+    for num in numbers:
+        for i in range(num, target+1):
+            if i - num >= 0 and dp[i-num] != None:
+                dp[i] = dp[i-num] + [num]
+
+    return dp[target]
 
 print(how_sum(7, [5,3,4,7], {}))
 print(how_sum(7, [2,3], {}))
@@ -62,3 +73,9 @@ print(how_sum_tab(7, [2,3]))
 print(how_sum_tab(7, [2,4]))
 print(how_sum_tab(8, [2,3,5]))
 print(how_sum_tab(300, [7, 14]))
+
+print(how_sum_fast(7, [5,3,4,7]))
+print(how_sum_fast(7, [2,3]))
+print(how_sum_fast(7, [2,4]))
+print(how_sum_fast(8, [2,3,5]))
+print(how_sum_fast(300, [7, 14]))
