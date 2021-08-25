@@ -24,18 +24,15 @@ class Solution(object):
         :rtype: int
         """
         dp = [float('inf')] * (n+1)
-        dp[1] = 1
+        dp[0] = 1
         
-        for i in range(1, n+1):
-            sqrt = (int) (math.sqrt(i))
-            
-            if sqrt*sqrt == i:
-                dp[i] = 1
-                continue
-            
-            for num in range(1, sqrt+1):
-                coin = num ** 2
+        coins = [i*i for i in range((int)(math.sqrt(n))+1)]
+        for coin in coins:
+            for i in range(coin, n+1):
+                if i == coin:
+                    dp[i] = 1
+                    continue
                 if i - coin >= 0:
-                    dp[i] = min(dp[i], dp[i - coin]+1)
+                    dp[i] = min(dp[i], dp[i-coin]+1)
         
         return dp[n]

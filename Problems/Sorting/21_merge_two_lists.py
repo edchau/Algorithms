@@ -38,3 +38,28 @@ class Solution(object):
         
         return result
         
+    def mergeTwoLists_iterative(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        result_head = ListNode(0)
+        result = result_head
+        
+        while l1 != None and l2 != None:
+            if l1.val <= l2.val:
+                result.next = l1
+                l1 = l1.next
+            else:
+                result.next = l2
+                l2 = l2.next
+            
+            result = result.next
+
+        if l1 == None:
+            result.next = l2
+        if l2 == None:
+            result.next = l1
+        
+        return result_head.next

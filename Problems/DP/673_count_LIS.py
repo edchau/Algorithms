@@ -20,8 +20,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        longest = [1] * len(nums)
-        freq = [1] * len(nums)
+        longest = [1] * len(nums) # dp
+        freq = [1] * len(nums) # frequency dp
 
         count = 1
         max_len = 1
