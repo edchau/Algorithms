@@ -45,10 +45,9 @@ def all_construct_tab(target, word_bank):
     dp[0] = [[]]
 
     for i in range(len(target) + 1):
-        if dp[i] != None:
-            for word in word_bank:
-                if target[i:].find(word) == 0:
-                    dp[i + len(word)] += [arr + [word] for arr in dp[i]]
+        for word in word_bank:
+            if target[i:].find(word) == 0:
+                dp[i + len(word)] += [arr + [word] for arr in dp[i]]
 
     return dp[len(target)]
 
