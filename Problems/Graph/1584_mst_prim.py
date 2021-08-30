@@ -9,6 +9,8 @@ them: |xi - xj| + |yi - yj|, where |val| denotes the absolute value of val.
 
 Return the minimum cost to make all points connected. All points are connected if there 
 is exactly one simple path between any two points.
+
+https://leetcode.com/problems/min-cost-to-connect-all-points/discuss/845706/python-mst-with-kruskal-algorithm-prim-algorithm
 """
 
 
