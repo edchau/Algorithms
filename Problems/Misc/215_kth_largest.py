@@ -6,7 +6,30 @@ Note that it is the kth largest element in the sorted order,
 not the kth distinct element.
 """
 
+# Heap
 
+import heapq as hq
+
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        k = len(nums) - k
+        pq = []
+        
+        for num in nums:
+            hq.heappush(pq, num)
+        
+        while len(pq) > 0:
+            val = hq.heappop(pq)
+            if k == 0:
+                return val
+            k -= 1
+
+# Quick Select
 class Solution(object):
     def findKthLargest(self, nums, k):
         """

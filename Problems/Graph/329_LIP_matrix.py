@@ -22,7 +22,6 @@ class Solution(object):
         directions = [(0, -1), (0, 1), (1, 0), (-1, 0)]
         in_degree = [[0] * cols for _ in range(rows)] 
         
-        # add indegree to nodes with increasing value
         for x in range(rows):
             for y in range(cols):
                 for direction in directions:
@@ -30,8 +29,7 @@ class Solution(object):
                     if nx >= 0 and ny >= 0 and nx < rows and ny < cols:
                         if matrix[nx][ny] < matrix[x][y]:
                             in_degree[x][y] += 1
-
-        # topological sort           
+                            
         queue = []
         for x in range(rows):
             for y in range(cols):

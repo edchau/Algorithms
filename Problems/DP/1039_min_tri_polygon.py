@@ -22,7 +22,9 @@ class Solution(object):
         A = values
         dp = [[0]*(n) for _ in range(n)]
         
+        # compute tri i, j, k while adding the prev triangles from i to k and j to k
         for L in range(2, n):
+            # how many triangles to compute
             for i in range(n-L):
                 j = i + L
                 dp[i][j] = float('inf')
