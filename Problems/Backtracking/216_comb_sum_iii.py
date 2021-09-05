@@ -16,7 +16,6 @@ class Solution(object):
         :type n: int
         :rtype: List[List[int]]
         """
-        dp = [[] for i in range(n+1)]
         candidates = [i for i in range(1, 10)]
         result = []
         self.backtrack(candidates, n, 0, [], result, k)

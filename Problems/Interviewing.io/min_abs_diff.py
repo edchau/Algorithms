@@ -14,10 +14,7 @@ def min_abs_diff(nums):
     for num in nums:
         for j in range(target, num-1, -1):
             curr = sum(dp[j-num])
-            if num > target or num + curr > target:
-                end_point = j
-                return dp[j-num] + [num]
-            else:
+            if not(num > target or num + curr > target):
                 dp[j] = dp[j-num] + [num]
     partitions = [list(set(dp[end_point]) ^  nums), dp[end_point]]
     
