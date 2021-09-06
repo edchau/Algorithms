@@ -22,6 +22,45 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
+        n = len(arr)
+        left = [0] * n
+        right = [0] * n
+        stack = []
+        
+        # count values less than left
+        for i in range(n):
+            count = 1
+            while stack and stack[-1][0] > arr[i]:
+                count += stack.pop()[1]
+            left[i] = count
+            stack.append((arr[i], count))
+        
+        stack = []
+        # count values less than right
+        for i in range(n-1, -1, -1):
+            count = 1
+            while stack and stack[-1][0] >= arr[i]:
+                count += stack.pop()[1]
+            right[i] = count
+            stack.append((arr[i], count))
+            
+        # left * right is total num of times the val is min
+        total = 0
+        for  i in range(n):
+            total += left[i] * right[i] * arr[i]
+        
+        return total % (10**9 + 7)
+
+
+
+
+
+
+    def sumSubarrayMins(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
         result = 0
         stack = []
         arr = [0] + arr + [0]
@@ -37,6 +76,6 @@ class Solution(object):
                 # left, val, right (need to go to right first)
                 result += arr[val] * (val-left) * (right-val)
             # store indices in stack to calc left and right
-            stack.append(i)
+            stack.append(right)
             
         return result % (10**9 + 7)
