@@ -17,6 +17,7 @@ class Solution(object):
         :rtype: int
         """
         stack = [float('inf')]
+        # decreasing monotonic stack
         result = 0
         for val in arr:
             while stack[-1] <= val:

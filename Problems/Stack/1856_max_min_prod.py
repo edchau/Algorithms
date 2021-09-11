@@ -83,7 +83,6 @@ class Solution(object):
                 # its status as min value
                 start = idx
             stack.append((start, val))
-        print(stack)
         
         # compute max min prod from start to end
         # longest subarray possible given current

@@ -24,19 +24,17 @@ class Solution(object):
         :type high: int
         :rtype: TreeNode
         """
-        if root == None:
-            return None
-        
-        root.left = self.trimBST(root.left, low, high)
-        
-        if root.val < low:
-            # trim entire left subtree
-            return self.trimBST(root.right, low, high)
-        
-        if root.val > high:
-            # trim entire right subtree
-            return self.trimBST(root.left, low, high)
+        def traverse(root, L, R):
+            if root == None:
+                return None
+            if root.val < L:
+                return traverse(root.right, L, R)
+            elif root.val > R:
+                return traverse(root.left, L, R)
             
-        root.right = self.trimBST(root.right, low, high)
-        
-        return root
+            root.left = traverse(root.left, L, R)
+            root.right = traverse(root.right, L, R)
+            
+            return root
+            
+        return traverse(root, low, high)

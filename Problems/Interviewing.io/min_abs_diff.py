@@ -1,6 +1,8 @@
 """
 Salesforce Question
 https://www.careercup.com/question?id=5161552609542144
+partition a set so its difference between the sums are 
+the minimum absolute difference
 """
 
 # This is similar to subset sum problem

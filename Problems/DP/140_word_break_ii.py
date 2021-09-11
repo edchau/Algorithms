@@ -39,8 +39,6 @@ class Solution(object):
         """
         return self.word_break_help(s, wordDict, {})
         
-    
-    
     def word_break_help(self, target, words, memo):
         if target in memo:
             return memo[target]

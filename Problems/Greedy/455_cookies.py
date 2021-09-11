@@ -9,3 +9,25 @@ j to the child i, and the child i will be content. Your goal is
 to maximize the number of your content children and output the 
 maximum number.
 """
+
+class Solution(object):
+    def findContentChildren(self, g, s):
+        """
+        :type g: List[int]
+        :type s: List[int]
+        :rtype: int
+        """
+        g.sort()
+        s.sort()
+        
+        count = 0
+        child_ptr = 0
+        for i in range(len(s)):
+            if s[i] >= g[child_ptr]:
+                count += 1
+                child_ptr += 1
+            
+            if child_ptr == len(g):
+                break
+        
+        return count

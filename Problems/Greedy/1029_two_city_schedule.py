@@ -29,12 +29,6 @@ class Solution(object):
         :type costs: List[List[int]]
         :rtype: int
         """
-class Solution(object):
-    def twoCitySchedCost(self, costs):
-        """
-        :type costs: List[List[int]]
-        :rtype: int
-        """
         min_cost = 0
         for cost in costs:
             min_cost += cost[0]
