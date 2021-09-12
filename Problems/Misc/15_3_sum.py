@@ -18,7 +18,7 @@ class Solution(object):
         # sum ii problem (sorted)
         
         for i, val in enumerate(nums):
-            # duplicate negative number
+            # duplicate number
             if i > 0 and val == nums[i-1]:
                 continue
                 
