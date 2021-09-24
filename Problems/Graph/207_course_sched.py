@@ -30,33 +30,27 @@ class Solution(object):
         adj = [[] for _ in range(numCourses)]
         in_degree = [0 for _ in range(numCourses)]
         
-        # make adj list and calc in degree
-        for pre, course in prerequisites:
+        # make adj list and calc indegree
+        for course, pre in prerequisites:
             adj[pre].append(course)
             in_degree[course] += 1
-        
-        # perform kahn for topological sort to check if there
-        # is a cycle
+            
+        # topological sort to look for cycles
         queue = []
         
-        # init queue with courses with in degree 0
         for course in range(numCourses):
             if in_degree[course] == 0:
                 queue.append(course)
         
         index = 0
+        
+        # kahn algorithm
         while len(queue) > 0:
             course = queue.pop(0)
             index += 1
-            
-            for next_course in adj[course]:
-                in_degree[next_course] -= 1
-                if in_degree[next_course] == 0:
-                    queue.append(next_course)
+            for neighbor in adj[course]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
         
-        if index == numCourses:
-            return True
-    
-        return False
-            
-        
+        return index == numCourses

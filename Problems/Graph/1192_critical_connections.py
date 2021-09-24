@@ -1,18 +1,18 @@
 """
-Tarjan's Algorithm to Find SCCs
+There are n servers numbered from 0 to n - 1 connected 
+by undirected server-to-server connections forming a network 
+where connections[i] = [ai, bi] represents a connection between 
+servers ai and bi. Any server can reach other servers directly 
+or indirectly through the network.
 
-Perform DFS to find critical connection
-in a network
+A critical connection is a connection that, if removed, will make 
+some servers unable to reach some other server.
 
-Find a gap in the lowest rank to find
-the edge of critical connection
+Return all critical connections in the network in any order.
 
-idea: if there is a cycle so there are multiple
-edges that connect to a node, then it is not a critical connection
-
+https://www.youtube.com/watch?v=RYaakWv5m6o&ab_channel=TechRevisions
 O(V+E)
 """
-
 class Solution(object):
     def criticalConnections(self, n, connections):
         """
