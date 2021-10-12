@@ -26,6 +26,8 @@ class Solution(object):
         element s.t. nums[i] = nums[i-1] or
         nums[i] = nums[i-1]
         Otherwise, it will be the first element
+        (constraints: every other element is unique
+        except for 1)
         """
         
         for i in range(2, len(nums)):

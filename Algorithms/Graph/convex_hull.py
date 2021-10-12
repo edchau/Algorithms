@@ -8,10 +8,14 @@ https://leetcode.com/problems/erect-the-fence/
 https://leetcode.com/problems/erect-the-fence/discuss/1442266/A-Detailed-Explanation-with-Diagrams-(Graham-Scan)
 
 https://www.youtube.com/watch?v=B2AJoQSZf4M&ab_channel=StableSort
+
+O(nlogn) (sort)
 """
 
 class Solution:
-    def outerTrees(self, trees: List[List[int]]) -> List[List[int]]:
+    def outerTrees(self, trees):
+        # cross product to determine clockwise/cc
+        # area is positive = counter clockwise
         def cmp(p1, p2, p3):
             x1, y1 = p1
             x2, y2 = p2            

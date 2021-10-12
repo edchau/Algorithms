@@ -23,6 +23,9 @@ class Solution(object):
     def traverse_right(self, node, right_side, depth):
         if node:
             if len(right_side) == depth:
+                # appends right node first, if left node,
+                # then will not append unless there is no
+                # right node
                 right_side.append(node.val)
             
             self.traverse_right(node.right, right_side, depth+1)

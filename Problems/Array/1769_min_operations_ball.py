@@ -45,7 +45,7 @@ class Solution(object):
             if boxes[i+1] == '1':
                 right_count += 1
             right_cost += right_count
-            print(right_count, right_cost)
+            # print(right_count, right_cost)
             output[i] += right_cost
         
         return output
