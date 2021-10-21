@@ -21,9 +21,7 @@ public class Anagrams {
     }
 
     public static List<String> sortAnagrams(List<String> words) {
-        
         Collections.sort(words, new Comparator<String>() {
-            @Override
             public int compare(String s1, String s2) {
                 s1 = s1.replaceAll("[^a-zA-Z]", "").toLowerCase();
                 s2 = s2.replaceAll("[^a-zA-Z]", "").toLowerCase();

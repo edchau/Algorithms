@@ -36,3 +36,31 @@ class Solution(object):
                     dp[i] = min(dp[i], dp[i-coin]+1)
         
         return dp[n]
+
+"""
+class Solution {
+    public int numSquares(int n) {
+        ArrayList<Integer> squares = new ArrayList<>();
+        int num = 1;
+        while (num * num <= n) {
+            squares.add(num*num);
+            num += 1;
+        }
+        
+        int[] dp = new int[n+1];
+        Arrays.fill(dp, n+1);
+        dp[0] = 1;
+        for (int coin : squares) {
+            for(int i = 0; i < n+1; ++i) {
+                if (i == coin) {
+                    dp[i] = 1;
+                }
+                else if (i - coin >= 0) {
+                    dp[i] = Math.min(dp[i], dp[i-coin] + 1);
+                }
+            }
+        }
+        return dp[n];
+    }
+}
+"""

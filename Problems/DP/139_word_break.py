@@ -32,3 +32,35 @@ class Solution(object):
                         dp[i+len(word)] = True
                         
         return dp[len(s)]
+
+"""
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        HashMap<String, Boolean> memo = new HashMap<>();
+        return search(s, wordDict, memo);
+    }
+    
+    public boolean search(String s, List<String> wordDict, HashMap<String, Boolean> memo) {
+        if (s.length() == 0) {
+            return true;
+        }
+        if (memo.containsKey(s)) {
+            return memo.get(s);
+        }
+        
+        for (String word : wordDict) {
+            if (word.length() <= s.length()) {
+                if (s.substring(0, word.length()).equals(word)) {
+                    if (search(s.substring(word.length()), wordDict, memo)) {
+                        memo.put(s, true);
+                        return true;
+                    }
+                }   
+            }
+        }
+        
+        memo.put(s, false);
+        return false;
+    }
+}
+"""
